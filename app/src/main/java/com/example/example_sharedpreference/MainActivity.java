@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initTextView();
         initApp();
+        unsubscriber();
     }
 
     public void initApp() {
@@ -54,5 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void unsubscriber() { sharedPreferences.unregisterOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener); }
 
 }
