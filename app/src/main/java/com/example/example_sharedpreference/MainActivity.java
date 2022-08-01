@@ -11,6 +11,17 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private TextView textView;
 
+    private SharedPreferences.OnSharedPreferenceChangeListener onSharedPreferenceChangeListener = (sharedPreferences, s) -> {
+
+        if (s.equals("flat")) {
+
+            sharedPreferences.edit()
+                    .putInt("flat",89)
+                    .apply();
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         textView.setText(sharedPreferences.getInt("flat",5));
+
+
+
+
+        sharedPreferences.registerOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener);
 
     }
 
